@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["assets.mattilda.io"],
+  },
 };
 
 export default nextConfig;
