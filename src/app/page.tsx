@@ -9,6 +9,7 @@ export default function Home() {
   const [data, setData] = useState<Asset[]>([]);
 
   const supportedExtensions = [".svg"];
+  const apiData = "/api/data"
 
   const filterRoutes = (routes: Asset[]) => {
     return routes.filter((route: Asset) => {
@@ -20,7 +21,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetch("/api/data")
+    fetch(apiData)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -29,7 +30,7 @@ export default function Home() {
       })
       .then((data: Asset[]) => setData(filterRoutes(data)))
       .catch((e) => console.error(e));
-  }, []);
+  }, [apiData]);
 
   const total = data.length;
 
